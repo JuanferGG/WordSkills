@@ -1,0 +1,64 @@
+
+/*TODO Vars CSS */
+:root{
+    --color-p: rgb(245, 139, 40);
+
+
+}
+body{
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+header{
+    width: 100vw;
+    height: 5em;
+    display: flex;
+    background-color: var(--color-p);
+    justify-content: space-around;
+    align-items: center;
+}
+header .left, .right {
+    display: flex;
+    width: fit-content;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+}
+header .left a{
+    text-decoration: none;
+    color: white;
+    font-size: 1.4em;
+    font-weight: bold;
+    transition: all .5s;
+}
+header .left a:hover{
+    color: rgb(145, 51, 51);
+}
+header .left img{
+    width: 70px;
+}
+header .right ul{
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    gap: 2em;
+}
+header .right ul li{
+    list-style: none;
+}
+header .right ul li a{
+    text-decoration: none;
+    font-size: 1.5em;
+    color: white;
+    font-weight: bold;
+
+    transition: all .5s;
+}
+header .right ul li a:hover{
+    color: rgb(187, 49, 49);
+}
+main .sect-01{
+    
+}
