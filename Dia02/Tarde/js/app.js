@@ -8,20 +8,29 @@ let torreWin = []
 let player
 let min = 00
 let seg = 00
-
+let interTime
 
 //TODO Variables HTML
+//* Torres
 const torre_1 = document.getElementById('torre-1')
 const torre_2 = document.getElementById('torre-2')
 const torre_3 = document.getElementById('torre-3')
+//* Movimientos
 const moves = document.getElementById('moves')
+//* Contidad Fichas
 const cantFichas = document.getElementById('cantFichas')
+//* btn iniciar
 const start = document.getElementById('start')
+//* container config
 const config = document.getElementById('config')
 const main = document.getElementById('main')
 const namePlayer = document.getElementById('namePlayer')
 const time = document.getElementById('time')
+//* Botones Juego
 const btnsGame = document.getElementById('btnsGame')
+const nuevo = document.getElementById('nuevo')
+const pause = document.getElementById('pause')
+
 
 //* Function mover ficha
 torre_1.addEventListener('click', () => {
@@ -101,7 +110,7 @@ torre_3.addEventListener('click', () => {
         alert('You Win')
         config.style.display = 'flex'
         main.style.display = 'none'
-
+        btnsGame.style.display = 'none'
     }
 })
 
@@ -135,6 +144,9 @@ document.addEventListener('keyup', (e) => {
             main.style.display = 'flex'
             btnsGame.style.display = 'flex'
             crearFichas(cantFichas.value)
+            clearInterval(interTime)
+            min = 0
+            seg = 0
             startTime()
         }
     }
@@ -157,14 +169,50 @@ start.addEventListener('click', () => {
         main.style.display = 'flex'
         btnsGame.style.display = 'flex'
         crearFichas(cantFichas.value)
+        clearInterval(interTime)
+        min = 0
+        seg = 0
         startTime()
     }
 })
 
+//TODO btns Game
+nuevo.addEventListener('click', () => {
+    config.style.display = 'flex'
+    main.style.display = 'none'
+    btnsGame.style.display = 'none'
+})
+
+//TODO Pause
+let interval = false
+pause.addEventListener('click', () => {
+    if (interval == false){
+        clearInterval(interTime)
+        interval = true
+        main.style.display = 'none'
+        pause.textContent = 'Reanudar'
+    } else {
+        interval = false
+        main.style.display = 'flex'
+        pause.textContent = 'Pausa'
+        interTime = setInterval(() => {
+            seg++
+            if(seg >= 60){
+                min++
+                time.textContent = `${min}:${seg}`
+                seg = 0
+            } else {
+                time.textContent = `${min}:${seg}`
+            }
+        }, 1000);
+    }
+})
+
+//* Tiempo del Juego
 function startTime(){
         min = 0
         seg = 0
-        setInterval(() => {
+        interTime = setInterval(() => {
             seg++
             if(seg >= 60){
                 min++
