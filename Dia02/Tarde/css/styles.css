@@ -65,6 +65,25 @@ main .mainGame{
     display: flex;
     gap: 2em;
 }
+.tablePlayers{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: fit-content;
+    height: fit-content;
+    background: rgb(251, 62, 29);
+    font-size: 1.3em;
+    display: none;
+    flex-direction: column;
+    color: rgb(243, 238, 238);
+    padding: .5em 2em;
+    border-radius: 20px;
+    font-weight: bold;
+}
+.tablePlayers b{
+    color: rgb(3, 3, 3);
+    font-size: 1.2em;
+}
 .container{
     display: flex;
     flex-direction: column;
@@ -105,13 +124,6 @@ main .mainGame{
     text-align: center;
     outline: none;
 }
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-    -webkit-appearance: none; 
-    margin: 0; 
-}
-
-input[type=number] { -moz-appearance:textfield; }
 
 .torre{
     width: 300px;

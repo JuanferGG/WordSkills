@@ -6,6 +6,7 @@ let fichaSelect = null
 let countMoves = 1
 let torreWin = []
 let player
+let playerWins = []
 let min = 00
 let seg = 00
 let interTime
@@ -30,7 +31,8 @@ const time = document.getElementById('time')
 const btnsGame = document.getElementById('btnsGame')
 const nuevo = document.getElementById('nuevo')
 const pause = document.getElementById('pause')
-
+//* Table ganadores
+const tablePlayers = document.getElementById('tablePlayers')
 
 //* Function mover ficha
 torre_1.addEventListener('click', () => {
@@ -111,6 +113,15 @@ torre_3.addEventListener('click', () => {
         config.style.display = 'flex'
         main.style.display = 'none'
         btnsGame.style.display = 'none'
+        tablePlayers.style.display = 'none'
+
+        //! Agregar el registro a la tabla
+
+        let timePlayer = (min + ':' + seg)
+
+        let html = `<div><b>Player:</b> ${player}, <b>Time:</b> ${timePlayer} <b>Moves:</b> ${countMoves}</div> `
+        playerWins.push(html)
+        tablePlayers.innerHTML = playerWins.join('')
     }
 })
 
@@ -132,6 +143,7 @@ document.addEventListener('keyup', (e) => {
         if(namePlayer.value == ''){
             return alert('Digite su Nombre')
         } else {
+            player = namePlayer.value
             torre_1.innerHTML = ''
             torre_2.innerHTML = ''
             torre_3.innerHTML = ''
@@ -143,6 +155,7 @@ document.addEventListener('keyup', (e) => {
             config.style.display = 'none'
             main.style.display = 'flex'
             btnsGame.style.display = 'flex'
+            tablePlayers.style.display = 'flex'
             crearFichas(cantFichas.value)
             clearInterval(interTime)
             min = 0
@@ -168,6 +181,7 @@ start.addEventListener('click', () => {
         config.style.display = 'none'
         main.style.display = 'flex'
         btnsGame.style.display = 'flex'
+        tablePlayers.style.display = 'flex'
         crearFichas(cantFichas.value)
         clearInterval(interTime)
         min = 0
